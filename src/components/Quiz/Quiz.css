@@ -1,0 +1,15 @@
+.quiz{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.quiz>div{
+    display: flex;
+    align-items: center;
+    margin: 10px 0; 
+}
+.quiz>div>p{
+    margin-left: 10px;
+}

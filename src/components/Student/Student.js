@@ -1,9 +1,10 @@
 import React from 'react'
+import Quiz from '../Quiz/Quiz'
 import "./Student.css"
 function Student() {
     return (
         <div>
-            student
+            <Quiz teacher={false}/>
         </div>
     )
 }

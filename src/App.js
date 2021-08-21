@@ -6,6 +6,8 @@ import {
 } from "react-router-dom";
 import Teacher from "./components/Teacher/Teacher";
 import Student from "./components/Student/Student";
+import Quiz from "./components/Quiz/Quiz";
+import CreateQuiz from "./components/CreateQuiz/CreateQuiz";
 
 function App() {
 
@@ -15,6 +17,9 @@ function App() {
         <Switch>
           <Route path="/teacher" exact>
             <Teacher/>
+          </Route>
+          <Route path="/createquiz" exact>
+            <CreateQuiz />
           </Route>
           <Route path="/student" exact>
             <Student />
