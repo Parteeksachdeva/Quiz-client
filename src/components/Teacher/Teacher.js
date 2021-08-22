@@ -1,19 +1,42 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import { useHistory } from 'react-router-dom'
-import Quiz from '../Quiz/Quiz';
+import axios from '../../axios';
+import CourseCard from '../CourseCard/CourseCard';
 import "./Teacher.css"
 function Teacher() {
+    const [Courses, setCourses] = useState([])
+    useEffect(() => {
+        if(!localStorage.getItem("token")) history.push("/teacherlogin")
+        axios.get("/courses")
+        .then(res=>{
+            setCourses(res.data)
+            console.log(res.data)
+        })
+        .catch(err=>{
+            console.log(err)
+        })
+    }, [])
     let history = useHistory();
-    function handleClick(){
-        history.push("/createquiz");
+    function addNew(){
+        var CourseName = prompt("Please enter Course Name");
+        axios.post("/courses",{CourseName})
+        .then(res=>{
+            history.push("/createquiz")
+        })
+        .catch(err=>{console.log(err)})
+        
     }
     return (
-        <div>
-            {false?
-            <button onClick={handleClick}>Create Quiz</button>
-            :<Quiz teacher={true}/>
+        <div className="student__main">
+            <h1>Available Courses</h1>
+            <div className="student">
+            { Courses.map((data,i)=>(
+                <CourseCard key={i} arr={data} index={i} teacher={true}/>
+            ))
             }
-        </div>
+            </div>
+            <button onClick={addNew}>Create New Course</button>
+    </div>
     )
 }
 

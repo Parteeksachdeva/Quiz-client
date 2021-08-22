@@ -1,0 +1,18 @@
+.student{
+    display: flex;
+    flex-wrap: wrap;
+}
+.student__main{
+    display: flex;
+    flex-direction: column;
+    background-color: #a3caf8;
+    height: 100%;
+    
+}
+.student__main>h1{
+    align-self: center;
+    font-size: 60px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    
+}
