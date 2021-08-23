@@ -1,3 +1,6 @@
+If the server is not running go to src<axios.js and change server to http://localhost:8000/
+and then clone this https://github.com/Parteeksachdeva/Quiz-server and do npm i , npm start  to run it locally.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
