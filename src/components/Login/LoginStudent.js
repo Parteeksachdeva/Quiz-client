@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import axios from '../../axios'
 import "./LoginStudent.css"
 import studentImg from '../../images/student-male.png'
@@ -27,7 +27,18 @@ function LoginStudent({type}) {
             })
              
         }
-        else history.push("/teacher")
+        else {
+            axios.post("/users/signin",{...form,teacher:true})
+            .then(res=>{
+                alert("Login sucessfully")
+                localStorage.setItem("token",res.data.token)
+                history.push("/teacher")
+            })
+            .catch(err=>{
+               alert("Invalid Credentials")
+            })
+            
+        }
     }
     return (
         <div className="lstudent">
@@ -60,7 +71,7 @@ function LoginStudent({type}) {
                 </form>
                 {type==="S" && 
                 <div>
-                    <p>New User? Register</p>
+                    <p className="lstudent__footer">New Student?<Link to="studentregister">Register</Link></p>
                 </div>}
             </div>
         </div>

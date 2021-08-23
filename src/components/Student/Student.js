@@ -18,8 +18,17 @@ function Student() {
             console.log(err)
         })
     }, [])
+    function logout(){
+        localStorage.removeItem('token');
+        history.push("studentlogin")
+    }
     return (
         <div className="student__main">
+            {localStorage.getItem("token") && 
+                <div className="buttons">
+                    <button onClick={logout}>Logout</button>
+                </div>
+            }
             {localStorage.getItem("token") && <h1>Available Courses</h1>}
             {localStorage.getItem("token") &&
             <div className="student">

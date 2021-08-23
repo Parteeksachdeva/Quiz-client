@@ -1,5 +1,5 @@
 .lstudent{
-    height: 100%;
+    min-height: 100vh;
     background-color: #5d8fc9;
     display: flex;
     justify-content: center;
@@ -43,4 +43,16 @@
 }
 .main__form>button:hover {
     background-color: #dce6fd;
+  }
+  .lstudent__footer{
+      margin-top: 5px;
+      
+  }
+  .lstudent__footer>a{
+    text-decoration: underline;
+    font-style: italic;
+    margin-left: 10px;
+    color: black;
+    font-weight: 700;
+
   }

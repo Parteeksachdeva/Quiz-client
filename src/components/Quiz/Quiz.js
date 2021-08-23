@@ -5,6 +5,7 @@ import "./Quiz.css"
 function Quiz({teacher}) {
     const id=useParams()
     const i=id?.id;
+    const [mongoid,setMongoid] = useState("")
     const [questions, setQuestions] = useState([{}])
     const [answers,setAnswer] = useState({
         A:false,
@@ -16,6 +17,7 @@ function Quiz({teacher}) {
     useEffect(() => {
         axios.get("/courses")
         .then(res=>{
+            setMongoid(res.data[i]?._id)
             setQuestions(res.data[i]?.questions)
             console.log(res.data[i]?.questions)
         })
@@ -58,9 +60,26 @@ function Quiz({teacher}) {
             setScore(score+1);
         }
         if(index+1===questions.length){
-            shallowEqual(questions[index]?.answers, answers) ? 
-            alert(`Quiz Completed, Your Score is ${score+1}`)
-            : alert(`Quiz Completed, Your Score is ${score}`)
+            if(shallowEqual(questions[index]?.answers, answers)) {
+                axios.post("/courses/addScore",{score:score+1,id:mongoid})
+                .then(res=>{
+                    alert(`Quiz Completed, Your Score is ${score+1}`)
+                    window.location.reload();
+                })
+                .catch(err=>{alert("err")})
+            }
+            
+            else {
+                axios.post("/courses/addScore",{score:score+1,id:mongoid})
+                .then(res=>{
+                    alert(`Quiz Completed, Your Score is ${score}`)
+                    window.location.reload();
+                })
+                .catch(err=>{alert("err")})
+                
+            }
+
+
             history.push("/student")
             
         }
@@ -70,9 +89,13 @@ function Quiz({teacher}) {
     function handleChange(e){
         setAnswer({...answers,[e.target.name]:e.target.checked})
     }
+    function handleBack(){
+        history.push("/student");
+    }
     return (
         <div className="quiz">
             <p className="quiz__score">Score: {score}/{questions.length}</p>
+            <div className="back"><button onClick={handleBack}>back</button></div>
             <div className="quiz__main">
                 <div>
                     <label><b>Q{index+1}:</b></label>

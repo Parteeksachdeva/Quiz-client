@@ -1,5 +1,5 @@
 import React,{useState} from 'react'
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import axios from '../../axios';
 import "./CreateQuiz.css"
 
@@ -20,6 +20,7 @@ function CreateQuiz() {
         D:false,
         }
     })
+    let history = useHistory()
     function handleChange(e){
         setObj({...obj,[e.target.name]: e.target.value})
     }
@@ -82,9 +83,13 @@ function CreateQuiz() {
         a={...a,[e.target.name]:e.target.checked}
         setObj({...obj,answers:a})
     }
+    function handleBack(){
+        history.push("/teacher");
+    }
     return (
         <div className="createquiz">
             {i ? <h1>Update Your Whole Quiz</h1>:<h1>Add Questions in quiz</h1>}
+            <div className="back"><button onClick={handleBack}>back</button></div>
             <div className="createquiz__main">
                 <form onSubmit={handleSubmit}>
                     <div>

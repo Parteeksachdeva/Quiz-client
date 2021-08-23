@@ -11,6 +11,7 @@ import Quiz from "./components/Quiz/Quiz";
 import CreateQuiz from "./components/CreateQuiz/CreateQuiz";
 import Login from "./components/Login/LoginStudent";
 import RegisterStudent from "./components/RegisterStudent/RegisterStudent";
+import Home from "./components/Home/Home";
 
 function App() {
   
@@ -18,6 +19,9 @@ function App() {
     <Router>
       <div className="app">
         <Switch>
+        <Route path="/" exact>
+            <Home/>
+          </Route>
           <Route path="/teacher" exact>
             <Teacher/>
           </Route>

@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import "./RegisterStudent.css"
 import axios from '../../axios'
-import { useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import studentImg from '../../images/student-male.png'
 function RegisterStudent() {
     const [form,setForm] = useState({
@@ -48,6 +48,7 @@ function RegisterStudent() {
                 />
                 <button type="submit">Register</button>
                 </form>
+                <p className="lstudent__footer">Already a Student?<Link to="studentlogin">Login</Link></p>
             </div>
         </div>
     )

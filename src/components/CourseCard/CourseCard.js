@@ -12,7 +12,8 @@ function CourseCard({arr,index,teacher}) {
     }
     return (
         <div className="card">
-            <p>{arr?.CourseName}</p>
+            <p>{arr?.CourseName}</p><br/>
+            <p>Best Score: {arr?.MaxScore}</p>
             <div>
             
             {teacher ? <button onClick={handleClickEdit}>Edit</button>:<button onClick={handleClick}>Take Quiz</button>}

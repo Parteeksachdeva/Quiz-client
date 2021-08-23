@@ -1,0 +1,38 @@
+.home{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #5d8fc9;
+}
+.home>h1{
+    font-size: 50px;
+    margin-bottom: 20px;
+    color: #07274d;
+}
+.home__options{
+    display: flex;
+}
+.home__options>div{
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 60px;
+    border: 1px solid gray;
+    margin: 0 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+.home__options>div:hover{
+    border: 1px solid black;
+    transform: scale(1.1);
+}
+.home__options>div>img{
+    object-fit: contain;
+    height: 100px;
+}
+.home__options>div>h2{
+    margin-top: 10px;
+}

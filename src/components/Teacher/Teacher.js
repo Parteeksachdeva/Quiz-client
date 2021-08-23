@@ -26,8 +26,15 @@ function Teacher() {
         .catch(err=>{console.log(err)})
         
     }
+    function logout(){
+        localStorage.removeItem('token');
+        history.push("teacherlogin")
+    }
     return (
         <div className="student__main">
+             <div className="buttons">
+                    <button onClick={logout}>Logout</button>
+            </div>
             <h1>Available Courses</h1>
             <div className="student">
             { Courses.map((data,i)=>(
